@@ -1,6 +1,8 @@
 package com.example.demo;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,5 +26,14 @@ public class SuggestionsController {
 		} else {
 			return "Failure, likely duplicate email";
 		}
+	}
+
+	@PostMapping("/send_suggestion")
+	public String sendSuggestion(@RequestBody Suggestion suggestion) {
+		String email = suggestion.getEmail();
+		String content = suggestion.getContent();
+
+		db.addSuggestion(email, content);
+		return "Success!";
 	}
 }

@@ -7,11 +7,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
 
-public class DatabaseController {
+public class DatabaseBean {
 	private String URL;
 	private Connection conn;
 
-	public DatabaseController(String urlString, String username, String password) {
+	public DatabaseBean(String urlString, String username, String password) {
 		this.URL = urlString;
 
 		Properties props = new Properties();
